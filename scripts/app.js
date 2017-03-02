@@ -35,7 +35,8 @@ function onSuccess (data) {
     var earthquakeTimeInMs = earthquake.properties.time;
     var time = (currentTimeInMs - earthquakeTimeInMs) / (1000*60*60);
     var title = earthquake.properties.title;
-    new google.maps.Marker({
+    var newTitle = title.split(' ').slice(-2).join(' ');
+    var marker = new google.maps.Marker({
       position: new google.maps.LatLng(
         earthquake.geometry.coordinates[1],
         earthquake.geometry.coordinates[0]
@@ -43,7 +44,14 @@ function onSuccess (data) {
       map: map,
       title: earthquake.properties.title
     });
-    $('#info').append('<strong>' + title + '</strong>' + ' / ' + Math.round(time) + ' hours ago' + '<br>');
+    $('#info').append('<strong>' + newTitle + '</strong>' + ' / ' + Math.round(time) + ' hours ago' + '<br>');
+    var contentWindow = title;
+    var infowindow = new google.maps.InfoWindow({
+      content: contentWindow
+    });
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
   });
 }
 
