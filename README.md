@@ -5,7 +5,7 @@
 
 <img src="styles/geoquakes.png" width="80%">
 
-Technologies:
+## Technologies:
 
 * HTML
 * CSS
