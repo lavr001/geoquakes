@@ -1,5 +1,3 @@
-// define globals
-
 var map;
 $(document).on("ready", function() {
   initMap();
@@ -18,15 +16,12 @@ function getData () {
   });
 }
 
-
 function initMap() {
-
   var myLatLng = {lat: 37.78, lng: -122.44};
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 8,
     center: myLatLng
   });
-
 }
 
 function onSuccess (data) {
@@ -61,6 +56,3 @@ function onError(xhr, status, errorThrown) {
  console.log("Status: " + status);
  console.dir(xhr);
 }
-
-
-
